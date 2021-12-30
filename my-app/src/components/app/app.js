@@ -23,7 +23,10 @@ function App() {
                 <AppFilter/>
             </div>
 
-            <EmployersList data={date}/>
+            <EmployersList
+                data={date}
+                onDelete={id=>console.log(id)}
+            />
             <EmployersAddForm/>
         </div>
     );
