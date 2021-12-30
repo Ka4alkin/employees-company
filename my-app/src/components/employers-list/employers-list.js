@@ -1,6 +1,5 @@
 import EmployersListItem from "../employers-list-item/employers-list-item";
 import './employers-list.css'
-import {logDOM} from "@testing-library/react";
 
 
 const EmployersList = ({data}) => {
@@ -13,7 +12,7 @@ const EmployersList = ({data}) => {
 
     const elements = data.map(item =>{
         const {id, ...itemProps} = item;
-        console.log(itemProps)
+        // console.log(itemProps)
         return (
             <EmployersListItem key={id} {...itemProps}/>
         )

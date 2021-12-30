@@ -4,7 +4,6 @@ import SearchPanel from "../search-panel/search-panel";
 import AppFilter from "../app-filter/app-filter";
 import EmployersList from "../employers-list/employers-list";
 import EmployersAddForm from "../employers-add-form/employers-add-form";
-import EmployersListItem from "../employers-list-item/employers-list-item";
 
 function App() {
 
