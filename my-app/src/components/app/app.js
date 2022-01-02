@@ -17,26 +17,43 @@ class App extends Component {
                 {name: 'Merkel V.', salary: 1100, increase: false, id: 3},
             ]
         }
+        this.maxId = 4
     }
-
 
     deleteItem = (id) => {
         this.setState(({data}) => {
-            // const index = data.findIndex(elem => elem.id === id)
-
-            /*const before = data.slice(0,index)
-            const after = data.slice(index + 1)
-
-            const newArr = [...before,...after]*/
-
+            this.maxId--
             return {
                 data: data.filter(elem => elem.id !== id)
             }
-
         })
     }
 
+    onAddPersonApp = (name,salary) => {
+        console.log('onAddPersonApp')
+
+
+        const newItem = {
+            name,
+            salary,
+            increase: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        });
+
+        console.log(newItem)
+
+    }
+
+
+
     render() {
+
         return (
             <div className="App">
                 <AppInfo/>
@@ -48,9 +65,12 @@ class App extends Component {
 
                 <EmployersList
                     data={this.state.data}
+
                     onDelete={this.deleteItem}
                 />
-                <EmployersAddForm/>
+                <EmployersAddForm
+                    onAddPersonApp={this.onAddPersonApp}
+                />
             </div>
         );
     }

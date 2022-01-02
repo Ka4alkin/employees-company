@@ -20,16 +20,27 @@ class EmployersAddForm extends Component {
         })
     }
 
+    onAddPerson = (e) => {
+        e.preventDefault()
+        console.log('addPerson')
+
+        this.props.onAddPersonApp(this.state.name,this.state.salary)
+    }
+
 
     render() {
 
+        const {id} = this.props
         const {name, salary} = this.state
+
 
         return (
             <div className="app-add-form">
                 <h3>Добавьте нового сотрудника</h3>
                 <form
-                    className="add-form d-flex">
+                    className="add-form d-flex"
+                    onSubmit={this.onAddPerson}
+                    >
                     {/*управляемий елемент
                     двойное связивание
                     исключение: инпут тип ФАЙЛ
@@ -48,7 +59,8 @@ class EmployersAddForm extends Component {
                            placeholder="З/П в $?"/>
 
                     <button type="submit"
-                            className="btn btn-outline-light">Добавить
+                            className="btn btn-outline-light"
+                    >Добавить
                     </button>
                 </form>
             </div>
