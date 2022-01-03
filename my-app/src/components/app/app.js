@@ -12,9 +12,9 @@ class App extends Component {
 
         this.state = {
             data: [
-                {name: 'John A.', salary: 800, increase: false, id: 1},
-                {name: 'Dominik T.', salary: 1500, increase: true, id: 2},
-                {name: 'Merkel V.', salary: 1100, increase: false, id: 3},
+                {name: 'John A.', salary: 800, increase: false, rise: true, id: 1},
+                {name: 'Dominik T.', salary: 1500, increase: true, rise: false, id: 2},
+                {name: 'Merkel V.', salary: 1100, increase: false, rise: false, id: 3},
             ],
             term: ''
         }
@@ -35,9 +35,11 @@ class App extends Component {
         const newItem = {
             name,
             salary,
+            rise: false,
             increase: false,
             id: this.maxId++
         }
+
         this.setState(({data}) => {
             const newArr = [...data, newItem];
             return {
@@ -61,6 +63,26 @@ class App extends Component {
         this.setState({term})
     }
 
+    onToggleIncrease = (id) => {
+        console.log(`Increase this ${id}`)
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id)
+
+            const old = data[index]
+            const newItem = {...old, increase: !old.increase}
+
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
+
+            return {
+                data: newArr
+            }
+        })
+    }
+
+    onToggleRise = (id) => {
+        console.log(`Rise this ${id}`)
+    }
+
 
     render() {
 
@@ -82,6 +104,8 @@ class App extends Component {
                     // data={this.state.data}
                     data={visibleData}
                     onDelete={this.deleteItem}
+                    onToggleIncrease={this.onToggleIncrease}
+                    onToggleRise={this.onToggleRise}
                 />
                 <EmployersAddForm
                     onAddPersonApp={this.onAddPersonApp}
