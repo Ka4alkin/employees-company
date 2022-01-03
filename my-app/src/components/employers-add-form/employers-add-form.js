@@ -20,11 +20,17 @@ class EmployersAddForm extends Component {
         })
     }
 
-    onAddPerson = (e) => {
+    onSubmit  = (e) => {
         e.preventDefault()
-        console.log('addPerson')
+
+        if (this.state.name.length < 3 || !this.state.salary) return;
 
         this.props.onAddPersonApp(this.state.name,this.state.salary)
+
+        this.setState({
+            name: '',
+            salary: ''
+        })
     }
 
 
@@ -39,7 +45,7 @@ class EmployersAddForm extends Component {
                 <h3>Добавьте нового сотрудника</h3>
                 <form
                     className="add-form d-flex"
-                    onSubmit={this.onAddPerson}
+                    onSubmit={this.onSubmit }
                     >
                     {/*управляемий елемент
                     двойное связивание
