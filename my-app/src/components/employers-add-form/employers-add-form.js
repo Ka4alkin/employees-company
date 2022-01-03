@@ -36,7 +36,7 @@ class EmployersAddForm extends Component {
 
     render() {
 
-        const {id} = this.props
+        // const {id} = this.props
         const {name, salary} = this.state
 
 
