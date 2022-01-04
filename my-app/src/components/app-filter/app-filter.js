@@ -26,7 +26,7 @@ const AppFilter = (props) => {
 
     return (
         <div className="btn-group">
-            {buttons} 
+            {buttons}
         </div>
     )
 }

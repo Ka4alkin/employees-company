@@ -92,8 +92,7 @@ class App extends Component {
         // this.setState({filter: name})
         // this.onSelectFilter()
     }
-    onFilterSelect = (filterName) => {
-        console.log('g')
+    onFilterSelect = (filterName) => { 
         this.setState({filter: filterName})
     }
 
