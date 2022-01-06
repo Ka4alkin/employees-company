@@ -62,3 +62,9 @@
 .list-group-item.increase .btn-star {
     color: #aeaeae;
 }
+
+.list-group-item .active{
+    border: 2px solid red !important;
+    background: #ff00002b !important;
+    border-radius: 5px;
+}

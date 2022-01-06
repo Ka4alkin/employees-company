@@ -75,6 +75,23 @@ class App extends Component {
         }))
     }
 
+    onSetSalaryFromInput = (getSalary, getId) => {
+        /*console.log('onSetSalaryFromInput')
+        console.log('getSalary', getSalary)
+        console.log('getId', getId)*/
+
+
+
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === getId) {
+                    return {...item, id: getId, salary: +getSalary}
+                }
+                return item
+            })
+        }))
+    }
+
     onSelectFilter(data, filterName) {
         switch (filterName) {
             case 'rise':
@@ -92,7 +109,7 @@ class App extends Component {
         // this.setState({filter: name})
         // this.onSelectFilter()
     }
-    onFilterSelect = (filterName) => { 
+    onFilterSelect = (filterName) => {
         this.setState({filter: filterName})
     }
 
@@ -128,6 +145,7 @@ class App extends Component {
                     data={visibleData}
                     onDelete={this.deleteItem}
                     onToggleProp={this.onToggleProp}
+                    onSetSalaryFromInput={this.onSetSalaryFromInput}
                 />
                 <EmployersAddForm
                     onAddPersonApp={this.onAddPersonApp}
